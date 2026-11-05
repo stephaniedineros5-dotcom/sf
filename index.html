@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Favorite Person ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2e1065 100%);
+      --accent-color: #f43f5e;
+      --accent-glow: rgba(244, 63, 94, 0.4);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-sub: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Floating particles in background */
+    .heart-particle {
+      position: absolute;
+      color: var(--accent-color);
+      opacity: 0.6;
+      font-size: 1.2rem;
+      animation: floatUp linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.8) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      max-width: 680px;
+      width: 100%;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Header Section */
+    header {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    header h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      color: #fda4af;
+      text-shadow: 0 0 15px var(--accent-glow);
+      line-height: 1.2;
+    }
+
+    header p {
+      color: var(--text-sub);
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      font-weight: 300;
+    }
+
+    /* Counter Card */
+    .counter-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .counter-card h2 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #fda4af;
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+
+    .timer-box {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.75rem 0.25rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .timer-number {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #fff;
+      display: block;
+    }
+
+    .timer-label {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Letter Section */
+    .letter-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      line-height: 1.8;
+      font-weight: 300;
+      color: #e2e8f0;
+      font-size: 1rem;
+    }
+
+    .letter-card p {
+      margin-bottom: 1.2rem;
+    }
+
+    .letter-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      color: #fda4af;
+      font-weight: 400;
+    }
+
+    /* Interactive Cards */
+    .reasons-section {
+      text-align: center;
+    }
+
+    .reasons-section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: #fda4af;
+      margin-bottom: 1rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .interactive-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      user-select: none;
+    }
+
+    .interactive-card:hover {
+      transform: translateY(-5px);
+      border-color: #fda4af;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .card-hint {
+      color: var(--text-sub);
+      font-size: 0.9rem;
+    }
+
+    .card-text {
+      display: none;
+      color: #fff;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      padding-bottom: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.8rem;
+      }
+      .timer-number {
+        font-size: 1.2rem;
+      }
+      .timer-label {
+        font-size: 0.65rem;
+      }
+      .letter-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>For My Favorite Person</h1>
+      <p>A small space on the internet made just for you ✨</p>
+    </header>
+
+    <!-- Counter Section -->
+    <div class="counter-card">
+      <h2>Time We've Been Together ❤️</h2>
+      <div class="timer-grid">
+        <div class="timer-box">
+          <span class="timer-number" id="days">0</span>
+          <span class="timer-label">Days</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="hours">0</span>
+          <span class="timer-label">Hours</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="minutes">0</span>
+          <span class="timer-label">Mins</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="seconds">0</span>
+          <span class="timer-label">Secs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Heartfelt Letter -->
+    <div class="letter-card">
+      <p>My dearest <span class="highlight">Estelle</span>,</p>
+      
+      <p>I built this little page because a simple message sometimes isn't enough to show how much you truly mean to me. No matter how many miles or time zones separate us, you are the sweetest part of my day, every single day.</p>
+      
+      <p>Thank you for being my peace, my reassurance, and my favorite person to wake up to and fall asleep talking to. You mean the world to me, and I can't wait for all the moments, milestones, and memories we'll share together.</p>
+      
+      <p>Forever & always,<br><span class="highlight">Yours ❤️</span></p>
+    </div>
+
+    <!-- Interactive Notes -->
+    <div class="reasons-section">
+      <h2>Tap a card for a reminder 💌</h2>
+      <div class="cards-grid">
+        <div class="interactive-card" onclick="flipCard(this)">
+          <span class="card-hint">✨ Tap me</span>
+          <span class="card-text">You bring light and comfort to my life even on the busiest days.</span>
+        </div>
+        <div class="interactive-card" onclick="flipCard(this)">
+          <span class="card-hint">✨ Tap me</span>
+          <span class="card-text">Distance means so little when someone means so much to you.</span>
+        </div>
+        <div class="interactive-card" onclick="flipCard(this)">
+          <span class="card-hint">✨ Tap me</span>
+          <span class="card-text">I'm so lucky and grateful to have you by my side.</span>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Made with ❤️ for Estelle
+    </footer>
+  </div>
+
+  <script>
+    // Set your start date here (YYYY-MM-DD format)
+    const startDate = new Date('2026-07-22T00:00:00');
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').innerText = days;
+      document.getElementById('hours').innerText = hours;
+      document.getElementById('minutes').innerText = minutes;
+      document.getElementById('seconds').innerText = seconds;
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // Flip Interactive Cards
+    function flipCard(card) {
+      const hint = card.querySelector('.card-hint');
+      const text = card.querySelector('.card-text');
+      
+      if (text.style.display === 'block') {
+        text.style.display = 'none';
+        hint.style.display = 'block';
+      } else {
+        text.style.display = 'block';
+        hint.style.display = 'none';
+      }
+    }
+
+    // Generate Floating Background Hearts
+    function createHearts() {
+      const heartSymbols = ['❤️', '💖', '✨', '💕', '🌸'];
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart-particle';
+        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        heart.style.animationDelay = (Math.random() * 5) + 's';
+        document.body.appendChild(heart);
+      }
+    }
+
+    createHearts();
+  </script>
+</body>
+</html>
