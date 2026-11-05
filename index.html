@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Favorite Person ✨</title>
+  <title>For Estelle ✨</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -38,7 +38,6 @@
       position: relative;
     }
 
-    /* Floating particles in background */
     .heart-particle {
       position: absolute;
       color: var(--accent-color);
@@ -72,7 +71,6 @@
       gap: 2rem;
     }
 
-    /* Header Section */
     header {
       text-align: center;
       margin-top: 1rem;
@@ -93,7 +91,66 @@
       font-weight: 300;
     }
 
-    /* Counter Card */
+    /* Music Player Card Customization */
+    .music-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .music-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .music-icon {
+      font-size: 1.6rem;
+      animation: pulseBeat 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .music-text h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .music-text p {
+      font-size: 0.8rem;
+      color: #fda4af;
+    }
+
+    .music-btn {
+      background: rgba(244, 63, 94, 0.2);
+      border: 1px solid #f43f5e;
+      color: #fda4af;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .music-btn:hover {
+      background: #f43f5e;
+      color: #fff;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
     .counter-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -139,7 +196,6 @@
       letter-spacing: 1px;
     }
 
-    /* Letter Section */
     .letter-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -166,7 +222,6 @@
       font-weight: 400;
     }
 
-    /* Interactive Cards */
     .reasons-section {
       text-align: center;
     }
@@ -218,7 +273,6 @@
       line-height: 1.5;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       margin-top: 1rem;
@@ -247,9 +301,21 @@
 
   <div class="container">
     <header>
-      <h1>For My Favorite Person</h1>
-      <p>A small space on the internet made just for you ✨</p>
+      <h1>For Estelle</h1>
+      <p>A little corner of the internet made just for you ✨</p>
     </header>
+
+    <!-- Customized Music Card for Favorite Vice -->
+    <div class="music-card">
+      <div class="music-info">
+        <span class="music-icon">🎧</span>
+        <div class="music-text">
+          <h3>Favorite Vice</h3>
+          <p>Arthur Nery</p>
+        </div>
+      </div>
+      <a class="music-btn" href="https://open.spotify.com/search/Favorite%20Vice%20Arthur%20Nery" target="_blank">Play Song 🎶</a>
+    </div>
 
     <!-- Counter Section -->
     <div class="counter-card">
@@ -310,7 +376,6 @@
   </div>
 
   <script>
-    // Set your start date here (YYYY-MM-DD format)
     const startDate = new Date('2026-07-22T00:00:00');
 
     function updateCounter() {
@@ -331,7 +396,6 @@
     setInterval(updateCounter, 1000);
     updateCounter();
 
-    // Flip Interactive Cards
     function flipCard(card) {
       const hint = card.querySelector('.card-hint');
       const text = card.querySelector('.card-text');
@@ -345,7 +409,6 @@
       }
     }
 
-    // Generate Floating Background Hearts
     function createHearts() {
       const heartSymbols = ['❤️', '💖', '✨', '💕', '🌸'];
       for (let i = 0; i < 20; i++) {
