@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Estelle ✨</title>
+  <title>Happy 4 Months, Estelle ✨</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -38,6 +38,7 @@
       position: relative;
     }
 
+    /* Floating Particles */
     .heart-particle {
       position: absolute;
       color: var(--accent-color);
@@ -91,6 +92,101 @@
       font-weight: 300;
     }
 
+    /* Celebration Badge */
+    .milestone-badge {
+      background: linear-gradient(90deg, rgba(244, 63, 94, 0.2), rgba(168, 85, 247, 0.2));
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      border-radius: 30px;
+      padding: 0.6rem 1.2rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #fda4af;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    /* LDR Photo Collage Section */
+    .photo-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .photo-section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: #fda4af;
+      margin-bottom: 1.2rem;
+    }
+
+    .photo-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .photo-frame {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-frame:hover {
+      transform: scale(1.03);
+      border-color: #fda4af;
+    }
+
+    .photo-box {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-sub);
+      font-size: 0.85rem;
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .photo-label {
+      font-size: 0.9rem;
+      color: #fda4af;
+      font-weight: 600;
+    }
+
+    .ldr-connector {
+      font-size: 1.8rem;
+      animation: pulseBeat 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+
+    /* Embedded Song Player */
     .music-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -112,11 +208,6 @@
     .music-icon {
       font-size: 1.6rem;
       animation: pulseBeat 2s infinite ease-in-out;
-    }
-
-    @keyframes pulseBeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
     }
 
     .music-text h3 {
@@ -143,6 +234,7 @@
       border: none;
     }
 
+    /* Relationship Counter */
     .counter-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -188,6 +280,7 @@
       letter-spacing: 1px;
     }
 
+    /* Letter Section */
     .letter-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -214,6 +307,7 @@
       font-weight: 400;
     }
 
+    /* Interactive Cards */
     .reasons-section {
       text-align: center;
     }
@@ -286,6 +380,12 @@
       .letter-card {
         padding: 1.5rem;
       }
+      .photo-grid {
+        flex-direction: column;
+      }
+      .ldr-connector {
+        transform: rotate(90deg);
+      }
     }
   </style>
 </head>
@@ -293,9 +393,38 @@
 
   <div class="container">
     <header>
-      <h1>For Estelle</h1>
-      <p>A little corner of the internet made just for you ✨</p>
+      <h1>Happy 4 Months, Estelle!</h1>
+      <p>A small space on the internet dedicated to us ✨</p>
     </header>
+
+    <!-- Milestone Celebration Banner -->
+    <div class="milestone-badge">
+      🎉 Celebrating Our 4th Month Anniversary — Nov 22, 2026 🎉
+    </div>
+
+    <!-- Distance Photo Collage Section -->
+    <div class="photo-section">
+      <h2>Two Miles Apart, One Heart ❤️</h2>
+      <div class="photo-grid">
+        <!-- Her Picture Frame -->
+        <div class="photo-frame">
+          <div class="photo-box">
+            <img src="https://via.placeholder.com/200x250/2e1065/fda4af?text=Estelle+%F0%9F%8C%B8" alt="Estelle">
+          </div>
+          <span class="photo-label">My Beautiful Estelle 🌸</span>
+        </div>
+
+        <div class="ldr-connector">💖</div>
+
+        <!-- Your Picture Frame -->
+        <div class="photo-frame">
+          <div class="photo-box">
+            <img src="https://via.placeholder.com/200x250/1e1b4b/fda4af?text=Me+%E2%9C%A8" alt="Me">
+          </div>
+          <span class="photo-label">Always Yours ✨</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Embedded Song Player for Favorite Vice by Arthur Nery -->
     <div class="music-card">
@@ -318,7 +447,7 @@
 
     <!-- Relationship Counter -->
     <div class="counter-card">
-      <h2>Time We've Been Together ❤️</h2>
+      <h2>Time We've Been Loving Each Other ❤️</h2>
       <div class="timer-grid">
         <div class="timer-box">
           <span class="timer-number" id="days">0</span>
@@ -343,9 +472,11 @@
     <div class="letter-card">
       <p>My dearest <span class="highlight">Estelle</span>,</p>
       
-      <p>I built this little page because a simple message sometimes isn't enough to show how much you truly mean to me. No matter how many miles or time zones separate us, you are the sweetest part of my day, every single day.</p>
+      <p>Happy 4th Monthsary, my love! Can you believe we’ve made it four full months already? Time feels like it flies by, yet every single day with you feels like a blessing I never want to take for granted.</p>
       
-      <p>Thank you for being my peace, my reassurance, and my favorite person to wake up to and fall asleep talking to. You mean the world to me, and I can't wait for all the moments, milestones, and memories we'll share together.</p>
+      <p>Even though we don’t have pictures side-by-side yet because of the distance and conflicting time zones, having you in my life fills every single gap. You are my quiet place, my reassurance, and my absolute favorite person to talk to every single day.</p>
+      
+      <p>Thank you for four beautiful months of love, patience, and warmth. I can't wait until the day we get to take our very first photo together in real life. Until then, you have my whole heart.</p>
       
       <p>Forever & always,<br><span class="highlight">Yours ❤️</span></p>
     </div>
@@ -356,21 +487,21 @@
       <div class="cards-grid">
         <div class="interactive-card" onclick="flipCard(this)">
           <span class="card-hint">✨ Tap me</span>
-          <span class="card-text">You bring light and comfort to my life even on the busiest days.</span>
+          <span class="card-text">Happy 4 months to my favorite person in the entire world!</span>
         </div>
         <div class="interactive-card" onclick="flipCard(this)">
           <span class="card-hint">✨ Tap me</span>
-          <span class="card-text">Distance means so little when someone means so much to you.</span>
+          <span class="card-text">Distance is just a test to see how far love can travel.</span>
         </div>
         <div class="interactive-card" onclick="flipCard(this)">
           <span class="card-hint">✨ Tap me</span>
-          <span class="card-text">I'm so lucky and grateful to have you by my side.</span>
+          <span class="card-text">I can't wait for the day we finally take our first picture together in person!</span>
         </div>
       </div>
     </div>
 
     <footer>
-      Made with ❤️ for Estelle
+      Made with ❤️ for Estelle | 4 Months & Forever
     </footer>
   </div>
 
