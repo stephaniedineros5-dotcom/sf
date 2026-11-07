@@ -38,7 +38,6 @@
       position: relative;
     }
 
-    /* Floating Particles */
     .heart-particle {
       position: absolute;
       color: var(--accent-color);
@@ -92,7 +91,6 @@
       font-weight: 300;
     }
 
-    /* Celebration Badge */
     .milestone-badge {
       background: linear-gradient(90deg, rgba(244, 63, 94, 0.2), rgba(168, 85, 247, 0.2));
       border: 1px solid rgba(244, 63, 94, 0.4);
@@ -106,7 +104,34 @@
       box-shadow: 0 0 15px var(--accent-glow);
     }
 
-    /* LDR Photo Collage Section */
+    /* Live Clocks Bar */
+    .clocks-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      text-align: center;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .clock-box h3 {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    .clock-time {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fda4af;
+    }
+
     .photo-section {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -186,7 +211,6 @@
       50% { transform: scale(1.25); }
     }
 
-    /* Embedded Song Player */
     .music-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -234,7 +258,6 @@
       border: none;
     }
 
-    /* Relationship Counter */
     .counter-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -280,7 +303,6 @@
       letter-spacing: 1px;
     }
 
-    /* Letter Section */
     .letter-card {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -307,7 +329,6 @@
       font-weight: 400;
     }
 
-    /* Interactive Cards */
     .reasons-section {
       text-align: center;
     }
@@ -386,6 +407,9 @@
       .ldr-connector {
         transform: rotate(90deg);
       }
+      .clocks-card {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -402,24 +426,34 @@
       🎉 Celebrating Our 4th Months Together — Nov 22, 2026 🎉
     </div>
 
+    <!-- Live Timezone Clocks Bar -->
+    <div class="clocks-card">
+      <div class="clock-box">
+        <h3>🇵🇭 Philippines</h3>
+        <div class="clock-time" id="ph-time">--:--:--</div>
+      </div>
+      <div class="clock-box">
+        <h3>🇩🇿 Algeria</h3>
+        <div class="clock-time" id="dz-time">--:--:--</div>
+      </div>
+    </div>
+
     <!-- Distance Photo Collage Section -->
     <div class="photo-section">
       <h2>Two Miles Apart, One Heart 💜</h2>
       <div class="photo-grid">
-        <!-- Her Picture Frame -->
         <div class="photo-frame">
           <div class="photo-box">
-            <img src="estelle.jpg" alt="Estelle">
+            <img src="estelle.jpg" alt="Estelle" onerror="this.style.display='none'; this.parentElement.innerText='Estelle Photo 🌸';">
           </div>
           <span class="photo-label">My Beautiful Estelle 🌸</span>
         </div>
 
         <div class="ldr-connector">💜</div>
 
-        <!-- Your Picture Frame -->
         <div class="photo-frame">
           <div class="photo-box">
-            <img src="me.jpg" alt="Me">
+            <img src="me.jpg" alt="Me" onerror="this.style.display='none'; this.parentElement.innerText='Your Photo ✨';">
           </div>
           <span class="photo-label">Always Yours ✨</span>
         </div>
@@ -508,10 +542,11 @@
   <script>
     const startDate = new Date('2026-07-22T00:00:00');
 
-    function updateCounter() {
+    function updateCounterAndClocks() {
       const now = new Date();
+      
+      // 1. Perfectly synced live relationship timer
       const diff = now - startDate;
-
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / 1000 / 60) % 60);
@@ -521,10 +556,22 @@
       document.getElementById('hours').innerText = hours;
       document.getElementById('minutes').innerText = minutes;
       document.getElementById('seconds').innerText = seconds;
+
+      // 2. Real-time clocks for Philippines and Algeria
+      const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+      
+      try {
+        document.getElementById('ph-time').innerText = new Intl.DateTimeFormat('en-US', { ...timeOptions, timeZone: 'Asia/Manila' }).format(now);
+        document.getElementById('dz-time').innerText = new Intl.DateTimeFormat('en-US', { ...timeOptions, timeZone: 'Africa/Algiers' }).format(now);
+      } catch (e) {
+        // Fallback if timezone string isn't fully supported by the browser environment
+        document.getElementById('ph-time').innerText = now.toLocaleTimeString();
+      }
     }
 
-    setInterval(updateCounter, 1000);
-    updateCounter();
+    // Run every 100ms for instantaneous second updates with zero lag drift
+    setInterval(updateCounterAndClocks, 100);
+    updateCounterAndClocks();
 
     function flipCard(card) {
       const hint = card.querySelector('.card-hint');
